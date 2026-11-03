@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import LugarPatrimonial
+from .models import LugarPatrimonial, Categoria
 
 # Create your views here.
 def index(request):
