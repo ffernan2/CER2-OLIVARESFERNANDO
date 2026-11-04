@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>hola</h1>
-</body>
-</html>
+{% extends 'catalogo/base.html' %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1>Bienvenido a la Fundación Patrimonio Vivo</h1>
+    <p class="lead">Explora, documenta y difunde los lugares históricos de Chile.</p>
+    <a href="{% url 'catalogo' %}" class="btn btn-primary btn-lg mt-3">Ir al Catálogo Patrimonial</a>
+</div>
+{% endblock %}

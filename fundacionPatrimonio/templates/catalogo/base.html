@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Fundacion Patrimonial Vivo</title>
 </head>
 <body>
-    <h1>hola esta es la pagina de la fundacion Patrimonial vivo</h1>
-    <h1>a</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark-bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Patrimonio vivo</a>
+            <div class="ms-auto d-flex">
+                {% if user.is_authenticated %}
+                    <span class="navbvar-text me-3 text-white">Hoal {{user.username}}</span>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-danger btn sm">Cerrar sesion</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-success btn-sm">Iniciar Sesion</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    
     
 </body>
 </html>
