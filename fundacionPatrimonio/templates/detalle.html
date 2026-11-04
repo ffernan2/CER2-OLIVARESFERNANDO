@@ -7,17 +7,17 @@
     </div>
 
     <div>
-        <h2>{ LugarPatrimonial.nombre }</h2>
-        <span class="badge bg-info text-blue mb-3">{{ LugarPatrimonial.categoria }}</span>
+        <h2>{ lugar.nombre }</h2>
+        <span class="badge bg-info text-blue mb-3">{{ lugar.categoria }}</span>
         <p>
-            <strong> Ubicacion: </strong> {{ LugarPatrimonial.ubicacion}}
+            <strong> Ubicacion: </strong> {{ lugar.ubicacion}}
         </p>
         <p>
-            <strong> Año: </strong> {{ LugarPatrimonial.anio_construccion}}
+            <strong> Año: </strong> {{ lugar.anio_construccion}}
         </p>
         <hr>
         <h4>Descripcion</h4>
-        <p class="text-justify"> {{ LugarPatrimonial.descripcion }}</p>
+        <p class="text-justify"> {{ lugar.descripcion }}</p>
         <a href="{% url 'catalogo' %}" class="btn btn-outline-secondary mt-3">Volver a Catalogo</a>
     </div>
 </div>

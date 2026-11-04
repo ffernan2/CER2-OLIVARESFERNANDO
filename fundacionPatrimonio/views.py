@@ -7,9 +7,15 @@ def index(request):
 
 def catalogo_view(request):
     lugares=LugarPatrimonial.objects.all()
-    return render(request, 'catalogo/catalogo.html', {'lugares': lugares})
+    categorias=Categoria.objects.all()
+    return render(request, 'catalogo/catalogo.html', {'lugares': lugares, 'categorias': categorias})
 
 def detalle_lugar(request, id):
     lugar=get_object_or_404(LugarPatrimonial, id=id)
     return render(request, 'catalogo/detalle.html', {'lugar' : lugar})
 
+def filtro_categoria(request, id):
+    categoria_seleccionada=get_object_or_404(Categoria, id=id)
+    lugares=LugarPatrimonial.objects.filter(categoria=categoria_seleccionada)
+    categorias=Categoria.objects.all()
+    return render(request, 'catalogo/catalogo.html', {'lugares': lugares, 'categorias': categorias, 'categoria_seleccionada': categoria_seleccionada})
