@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import LugarPatrimonial, Categoria
+
 
 # Create your views here.
 # RF01
@@ -7,17 +9,20 @@ def index(request):
     return render(request, 'catalogo/index.html')
 
 # RF02
+@login_required
 def catalogo_view(request):
     lugares=LugarPatrimonial.objects.all()
     categorias=Categoria.objects.all()
     return render(request, 'catalogo/catalogo.html', {'lugares': lugares, 'categorias': categorias})
 
 # RF03
+@login_required
 def detalle_lugar(request, id):
     lugar=get_object_or_404(LugarPatrimonial, id=id)
     return render(request, 'catalogo/detalle.html', {'lugar' : lugar})
 
 # RF05
+@login_required
 def filtro_categoria(request, id):
     categoria_seleccionada=get_object_or_404(Categoria, id=id)
     lugares=LugarPatrimonial.objects.filter(categoria=categoria_seleccionada)
