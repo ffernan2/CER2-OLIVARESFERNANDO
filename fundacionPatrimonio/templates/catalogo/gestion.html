@@ -1,0 +1,37 @@
+{% extends 'catalogo/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Gestión patrimonial</h2>
+    {% if perms.fundacionPatrimonio.add_lugarpatrimonial %}
+        <a href="{% url 'agregar' %}" class="btn btn-success">+ Agregar lugar</a>
+    {% endif %}
+</div>
+
+{% if not perms.fundacionPatrimonio.add_lugarpatrimonial and not perms.fundacionPatrimonio.change_lugarpatrimonial %}
+    <div class="alert alert-info">Tu usuario solo puede ver esta sección. No tienes permisos para agregar ni modificar lugares.</div>
+{% endif %}
+
+<table class="table table-striped align-middle">
+    <thead class="table-dark">
+        <tr><th>Nombre</th><th>Categoría</th><th>Ubicación</th><th>Año</th><th></th></tr>
+    </thead>
+    <tbody>
+        {% for lugar in lugares %}
+        <tr>
+            <td><a href="{% url 'detalle' lugar.id %}">{{ lugar.nombre }}</a></td>
+            <td>{{ lugar.categoria }}</td>
+            <td>{{ lugar.ubicacion }}</td>
+            <td>{{ lugar.anio_construccion }}</td>
+            <td>
+                {% if perms.fundacionPatrimonio.change_lugarpatrimonial %}
+                    <a href="{% url 'editar' lugar.id %}" class="btn btn-warning btn-sm">Modificar</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No hay lugares registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
