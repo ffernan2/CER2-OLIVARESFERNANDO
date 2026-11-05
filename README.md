@@ -10,8 +10,7 @@ Entrar a la carpeta: cd CER2-OLIVARESFERNANDO
 Instalar requirements.txt: -r requirements.txt
 
 -4
-Migrar base de datos: python manage.py makemigrations
-                      python manage.py migrate
+Migrar base de datos: python manage.py migrate
 
 -5
 Ejecutar el servidor en la terminal: python manage.py runserver
