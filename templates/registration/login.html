@@ -10,7 +10,7 @@
             </div>
             <div class="card-body">
                 {% if form.errors %}
-                    <div class="aler alert-danger"> Usuario o contraseñña incorrectos. Intenta de nuevo</div>
+                    <div class="aler alert-danger"> Usuario o contraseña incorrectos. Intenta de nuevo</div>
                 {% endif %}
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
